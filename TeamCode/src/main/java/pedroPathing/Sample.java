@@ -103,7 +103,7 @@ public class Sample extends OpMode {
     public void autonomousPathUpdate() {
         switch (pathState) {
             case 0:
-                follower.setMaxPower(0.5);
+                follower.setMaxPower(0.8);
                 follower.followPath(action1, true);
                 setPathState(1);
                 break;
