@@ -1,4 +1,4 @@
-package pedroPathing;
+package pedroPathing.OldAutos;
 
 
 import static android.os.SystemClock.sleep;
@@ -20,7 +20,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-
+@Disabled
 @Autonomous(name = "FourSpecimenUSEME", group = "Meet3")
 public class FourSpecimenUSEME extends OpMode {
     private Follower follower;

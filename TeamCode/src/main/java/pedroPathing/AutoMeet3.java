@@ -21,7 +21,7 @@ import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
 
-@Autonomous(name = "AutoMeet3", group = "Meet3")
+@Autonomous(name = "AutoMeet3", group = "Regionals")
 public class AutoMeet3 extends OpMode {
     private Follower follower;
     private Timer pathTimer;

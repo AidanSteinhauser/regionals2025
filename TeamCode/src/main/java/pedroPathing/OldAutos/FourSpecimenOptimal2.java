@@ -1,4 +1,4 @@
-package pedroPathing;
+package pedroPathing.OldAutos;
 
 
 import static android.os.SystemClock.sleep;
@@ -19,10 +19,9 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
-
 @Disabled
-@Autonomous(name = "FourSpecimenOptimal", group = "Meet3")
-public class FourSpecimenOptimal extends OpMode {
+@Autonomous(name = "FourSpecimenOptimal2", group = "Meet3")
+public class FourSpecimenOptimal2 extends OpMode {
     private Follower follower;
     private Timer pathTimer;
     private Timer sillyTimer;
@@ -30,99 +29,105 @@ public class FourSpecimenOptimal extends OpMode {
     private Timer opmodeTimer;
     private int pathState;
 
-    private final Pose firstPose = new Pose(135.65, 80.35, Math.toRadians(270));
-    private final Pose secondPose = new Pose(105, 76, Math.toRadians(270));
-    private final Pose thirdPose = new Pose(82, 120, Math.toRadians(0));
-    private final Pose thirdControlPoseOne = new Pose(130, 120, Math.toRadians(0));
-    private final Pose thirdControlPoseTuah = new Pose(80, 105, Math.toRadians(0));
-    private final Pose fifthPose = new Pose(130, 120, Math.toRadians(0));
-    private final Pose sixthPose = new Pose(82, 130, Math.toRadians(0));
-    private final Pose sixthControlPoseOne = new Pose(82, 110, Math.toRadians(0));
-    private final Pose seventhPose = new Pose(130, 130, Math.toRadians(0));
-    private final Pose eighthPose = new Pose(110, 120, Math.toRadians(90));
-    private final Pose ninthPose = new Pose(135.5, 120, Math.toRadians(90));
-    private final Pose tenthPose = new Pose(105, 74, Math.toRadians(270));
-    private final Pose eleventhPose = new Pose(120, 120, Math.toRadians(90));
-    private final Pose twelfthPose = new Pose(135.5, 120, Math.toRadians(90));
-    private final Pose thirteenthPose = new Pose(105, 72, Math.toRadians(270));
-    private final Pose fourteenthPose = new Pose(120, 120, Math.toRadians(90));
-    private final Pose fifteenthPose = new Pose(135.5, 120, Math.toRadians(90));
-    private final Pose sixteenthPose = new Pose(105, 70, Math.toRadians(270));
-    private final Pose seventeenthPose = new Pose(120, 130, Math.toRadians(180));
+    private final Pose zeroPose = new Pose(135.65, 80.35, Math.toRadians(270));
+    private final Pose firstPose = new Pose(105, 76, Math.toRadians(270));
+    private final Pose secondPose = new Pose(82, 120, Math.toRadians(0));
+    private final Pose secondPoseControl = new Pose(130, 120, Math.toRadians(0));
+    private final Pose secondPoseControlTwo = new Pose(80, 105, Math.toRadians(0));
+    private final Pose thirdPose = new Pose(130, 120, Math.toRadians(0));
+    private final Pose fourthPose = new Pose(82, 130, Math.toRadians(0));
+    private final Pose fourthPoseControl = new Pose(82, 110, Math.toRadians(0));
+    private final Pose fifthPose = new Pose(130, 130, Math.toRadians(0));
+    private final Pose sixthPose = new Pose(110, 115, Math.toRadians(90));
+    private final Pose seventhPose = new Pose(135.5, 115, Math.toRadians(90));
+    private final Pose PoseInBetween = new Pose(110, 74, Math.toRadians(90));
+    private final Pose eighthPose = new Pose(105, 74, Math.toRadians(270));
+    private final Pose eighthPoseControl = new Pose(125, 74, Math.toRadians(270));
+    private final Pose ninthPose = new Pose(120, 120, Math.toRadians(90));
+    private final Pose tenthPose = new Pose(135.5, 120, Math.toRadians(90));
+    private final Pose PoseInBetween2 = new Pose(110, 72, Math.toRadians(90));
+    private final Pose eleventhPose = new Pose(105, 72, Math.toRadians(270));
+    private final Pose eleventhPoseControl = new Pose(125, 72, Math.toRadians(90));
+    private final Pose twelfthPoint = new Pose(120, 120, Math.toRadians(90));
+    private final Pose thirteenthPose = new Pose(135.5, 120, Math.toRadians(90));
+    private final Pose PoseInBetween3 = new Pose(110, 70, Math.toRadians(90));
+    private final Pose thirteenthPoseControl = new Pose(105, 70, Math.toRadians(90));
+    private final Pose fourteenthPose = new Pose(105, 70, Math.toRadians(270));
+    private final Pose fifteenthPose = new Pose(120, 130, Math.toRadians(180));
 
-    private PathChain action1, action2, action3, action4, action5, action6, action7, action8, action9, action10, action11, action12, action13, action14, action21, action22, action15, action16, action17, action18, action19, action20;
+    private PathChain action1, action2, action3, action4, action5, action6, action7, action8, action9, action10, action11, action12, action13, action21, action22, action14, action15, action17, action18, action19, action20;
     private DcMotor skibidiSlider = null;
 
 
     public void buildPaths() {
         action1 = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(firstPose), new Point(secondPose)))
-                .setLinearHeadingInterpolation(firstPose.getHeading(), secondPose.getHeading())
+                .addPath(new BezierLine(new Point(zeroPose), new Point(firstPose)))
+                .setLinearHeadingInterpolation(zeroPose.getHeading(), firstPose.getHeading())
                 .build();
 
         action2 = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(secondPose), new Point(thirdControlPoseOne), new Point(thirdControlPoseTuah), new Point(thirdPose)))
-                .setLinearHeadingInterpolation(secondPose.getHeading(), thirdPose.getHeading())
+                .addPath(new BezierCurve(new Point(firstPose), new Point(secondPoseControl), new Point(secondPoseControlTwo), new Point(secondPose)))
+                .setLinearHeadingInterpolation(firstPose.getHeading(), secondPose.getHeading())
                 .build();
 
         action3 = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(thirdPose), new Point(fifthPose)))
-                .setLinearHeadingInterpolation(thirdPose.getHeading(), fifthPose.getHeading())
+                .addPath(new BezierLine(new Point(secondPose), new Point(thirdPose)))
+                .setLinearHeadingInterpolation(secondPose.getHeading(), thirdPose.getHeading())
                 .build();
 
 
+        action4 = follower.pathBuilder()
+                .addPath(new BezierCurve(new Point(thirdPose), new Point(fourthPoseControl), new Point(fourthPose)))
+                .setLinearHeadingInterpolation(thirdPose.getHeading(), fourthPose.getHeading())
+                .build();
+
         action5 = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(fifthPose), new Point(sixthControlPoseOne), new Point(sixthPose)))
-                .setLinearHeadingInterpolation(fifthPose.getHeading(), sixthPose.getHeading())
+                .addPath(new BezierLine(new Point(fourthPose), new Point(fifthPose)))
+                .setLinearHeadingInterpolation(fourthPose.getHeading(), fifthPose.getHeading())
                 .build();
 
         action6 = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(fifthPose), new Point(sixthPose)))
+                .setLinearHeadingInterpolation(fifthPose.getHeading(), sixthPose.getHeading())
+                .build();
+
+        action7 = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(sixthPose), new Point(seventhPose)))
                 .setLinearHeadingInterpolation(sixthPose.getHeading(), seventhPose.getHeading())
                 .build();
 
-        action7 = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(seventhPose), new Point(eighthPose)))
+        action8 = follower.pathBuilder()
+                .addPath(new BezierCurve(new Point(seventhPose), new Point(eighthPoseControl), new Point(eighthPose)))
                 .setLinearHeadingInterpolation(seventhPose.getHeading(), eighthPose.getHeading())
                 .build();
 
-        action8 = follower.pathBuilder()
+        action9 = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(eighthPose), new Point(ninthPose)))
                 .setLinearHeadingInterpolation(eighthPose.getHeading(), ninthPose.getHeading())
                 .build();
-
-        action9 = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(ninthPose), new Point(tenthPose)))
+        action10 = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(ninthPose), new Point(tenthPose)))
                 .setLinearHeadingInterpolation(ninthPose.getHeading(), tenthPose.getHeading())
                 .build();
-
-        action10 = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(tenthPose), new Point(eleventhPose)))
+        action11 = follower.pathBuilder()
+                .addPath(new BezierCurve(new Point(tenthPose), new Point(eleventhPoseControl), new Point(eleventhPose)))
                 .setLinearHeadingInterpolation(tenthPose.getHeading(), eleventhPose.getHeading())
                 .build();
-        action11 = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(eleventhPose), new Point(twelfthPose)))
-                .setLinearHeadingInterpolation(eleventhPose.getHeading(), twelfthPose.getHeading())
-                .build();
         action12 = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(twelfthPose), new Point(thirteenthPose)))
-                .setLinearHeadingInterpolation(twelfthPose.getHeading(), thirteenthPose.getHeading())
+                .addPath(new BezierLine(new Point(eleventhPose), new Point(twelfthPoint)))
+                .setLinearHeadingInterpolation(eleventhPose.getHeading(), twelfthPoint.getHeading())
                 .build();
         action13 = follower.pathBuilder()
+                .addPath(new BezierCurve(new Point(twelfthPoint), new Point(thirteenthPoseControl), new Point(thirteenthPose)))
+                .setLinearHeadingInterpolation(twelfthPoint.getHeading(), thirteenthPose.getHeading())
+                .build();
+        action14 = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(thirteenthPose), new Point(fourteenthPose)))
                 .setLinearHeadingInterpolation(thirteenthPose.getHeading(), fourteenthPose.getHeading())
                 .build();
-        action14 = follower.pathBuilder()
+        action15 = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(fourteenthPose), new Point(fifteenthPose)))
                 .setLinearHeadingInterpolation(fourteenthPose.getHeading(), fifteenthPose.getHeading())
-                .build();
-        action15 = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(fifteenthPose), new Point(sixteenthPose)))
-                .setLinearHeadingInterpolation(fifteenthPose.getHeading(), sixteenthPose.getHeading())
-                .build();
-        action16 = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(sixteenthPose), new Point(seventeenthPose)))
-                .setLinearHeadingInterpolation(sixteenthPose.getHeading(), seventeenthPose.getHeading())
                 .build();
     }
 
@@ -140,7 +145,7 @@ public class FourSpecimenOptimal extends OpMode {
                 break;
             case 1:
                 if(!follower.isBusy()) {
-                    follower.holdPoint(secondPose);
+                    follower.holdPoint(firstPose);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -160,26 +165,26 @@ public class FourSpecimenOptimal extends OpMode {
                 break;
             case 3:
                 if(!follower.isBusy()) {
-                    follower.followPath(action5, true);
+                    follower.followPath(action4, true);
                         setPathState(4);
                 }
                 break;
             case 4:
                 if(!follower.isBusy()) {
-                    follower.followPath(action6,true);
+                    follower.followPath(action5,true);
                     setPathState(5);
                 }
                 break;
             case 5:
                 if(!follower.isBusy()) {
-                    follower.followPath(action7,true);
+                    follower.followPath(action6,true);
                     setPathState(6);
                 }
                 break;
             case 6:
                 if(!follower.isBusy()) {
                     follower.setMaxPower(0.5);
-                    follower.followPath(action8,true);
+                    follower.followPath(action7,true);
                     setPathState(7);
                 }
                 break;
@@ -189,18 +194,18 @@ public class FourSpecimenOptimal extends OpMode {
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(2200);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.followPath(action9,true);
+                    follower.followPath(action8,true);
                     setPathState(8);
                 }
                 break;
             case 8:
                 if(!follower.isBusy()) {
-                    follower.holdPoint(tenthPose);
+                    follower.holdPoint(eighthPose);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.followPath(action10,true);
+                    follower.followPath(action9,true);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -210,7 +215,7 @@ public class FourSpecimenOptimal extends OpMode {
             case 9:
                 if(!follower.isBusy()) {
                     follower.setMaxPower(0.5);
-                    follower.followPath(action11,true);
+                    follower.followPath(action10,true);
                     setPathState(10);
                 }
                 break;
@@ -220,18 +225,18 @@ public class FourSpecimenOptimal extends OpMode {
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(2200);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.followPath(action12,true);
+                    follower.followPath(action11,true);
                     setPathState(11);
                 }
                 break;
             case 11:
                 if(!follower.isBusy()) {
-                    follower.holdPoint(thirteenthPose);
+                    follower.holdPoint(eleventhPose);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.followPath(action13,true);
+                    follower.followPath(action12,true);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -241,7 +246,7 @@ public class FourSpecimenOptimal extends OpMode {
             case 12:
                 if(!follower.isBusy()) {
                     follower.setMaxPower(0.5);
-                    follower.followPath(action14,true);
+                    follower.followPath(action13,true);
                     setPathState(13);
                 }
                 break;
@@ -251,18 +256,18 @@ public class FourSpecimenOptimal extends OpMode {
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(2200);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.followPath(action15,true);
+                    follower.followPath(action14,true);
                     setPathState(14);
                 }
                 break;
             case 14:
                 if(!follower.isBusy()) {
-                    follower.holdPoint(sixteenthPose);
+                    follower.holdPoint(fourteenthPose);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.followPath(action16,true);
+                    follower.followPath(action15,true);
                     skibidiSlider.setPower(1);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -292,7 +297,6 @@ public class FourSpecimenOptimal extends OpMode {
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
         telemetry.addData("heading", follower.getPose().getHeading());
-        telemetry.addData("sillyTime", (sillyTimer.getElapsedTime())/1000);
         telemetry.update();
     }
 
@@ -306,7 +310,7 @@ public class FourSpecimenOptimal extends OpMode {
 
         Constants.setConstants(FConstants.class, LConstants.class);
         follower = new Follower(hardwareMap);
-        follower.setStartingPose(firstPose);
+        follower.setStartingPose(zeroPose);
         buildPaths();
     }
 
