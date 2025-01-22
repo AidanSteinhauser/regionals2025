@@ -3,6 +3,8 @@ package pedroPathing;
 
 import static android.os.SystemClock.sleep;
 
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.localization.Pose;
 import com.pedropathing.pathgen.BezierCurve;
@@ -16,12 +18,15 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
 @Autonomous(name = "fourSpecimen", group = "Regionals")
 public class fourSpecimen extends OpMode {
     private Follower follower;
+    private Telemetry telemetryA;
     private Timer pathTimer;
     private Timer sillyTimer;
     private Timer actionTimer;
@@ -437,8 +442,10 @@ public class fourSpecimen extends OpMode {
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
         telemetry.addData("heading", follower.getPose().getHeading());
-        telemetry.addData("sillyTime", (sillyTimer.getElapsedTime()) / 1000);
         telemetry.update();
+
+        telemetryA = new MultipleTelemetry(this.telemetry, FtcDashboard.getInstance().getTelemetry());
+        telemetryA.update();
     }
 
     @Override
