@@ -35,8 +35,8 @@ public class fourSpecimen extends OpMode {
     private final Pose startPose = new Pose(135.65, 80.35, Math.toRadians(270));
     private final Pose firstPosePreOuttake = new Pose(110, 76, Math.toRadians(270));
     private final Pose secondPoseOuttake = new Pose(107.25, 76, Math.toRadians(270));
-    private final Pose thirdPosePrePushControlOne = new Pose(130, 117, Math.toRadians(0));
-    private final Pose thirdPosePrePushControlTwo = new Pose(80, 102, Math.toRadians(0));
+    private final Pose thirdPosePrePushControlOne = new Pose(130, 118, Math.toRadians(0));
+    private final Pose thirdPosePrePushControlTwo = new Pose(80, 103, Math.toRadians(0));
     private final Pose thirdPosePrePushOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose fourthPosePostPushOne = new Pose(130, 120, Math.toRadians(0));
     private final Pose fifthPosePrePushTwoControlOne = new Pose(78, 110, Math.toRadians(0));
@@ -240,7 +240,7 @@ public class fourSpecimen extends OpMode {
             case 3:
                 if (!follower.isBusy()) {
                     follower.holdPoint(secondPoseOuttake);
-                    sleep(300);
+                    sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -302,7 +302,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(300);
+                    sleep(175);
                     follower.setMaxPower(0.95);
                     follower.followPath(action11PostIntakeOne, true);
                     setPathState(12);
@@ -334,7 +334,7 @@ public class fourSpecimen extends OpMode {
             case 15:
                 if (!follower.isBusy()) {
                     follower.holdPoint(thirteenthPoseOuttakeTwo);
-                    sleep(300);
+                    sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -360,7 +360,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(300);
+                    sleep(175);
                     follower.setMaxPower(0.95);
                     follower.followPath(action16PostIntakeTwo, true);
                     setPathState(18);
@@ -392,7 +392,7 @@ public class fourSpecimen extends OpMode {
             case 21:
                 if (!follower.isBusy()) {
                     follower.holdPoint(eighteenthPoseOuttakeThree);
-                    sleep(300);
+                    sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -418,7 +418,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(300);
+                    sleep(175);
                     follower.setMaxPower(0.95);
                     follower.followPath(action21PostIntakeThree, true);
                     setPathState(24);
@@ -450,7 +450,7 @@ public class fourSpecimen extends OpMode {
             case 27:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentyThirdPoseOuttakeFour);
-                    sleep(300);
+                    sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
