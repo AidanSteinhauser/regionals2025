@@ -220,7 +220,7 @@ public class fourSpecimen extends OpMode {
                 break;
             case 1:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action1PreOuttakeOne, true);
                     skibidiSlider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     skibidiSlider.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -232,7 +232,7 @@ public class fourSpecimen extends OpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action2OuttakeOne, true);
                     setPathState(3);
                 }
@@ -240,12 +240,12 @@ public class fourSpecimen extends OpMode {
             case 3:
                 if (!follower.isBusy()) {
                     follower.holdPoint(secondPoseOuttake);
-                    sleep(500);
+                    sleep(300);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(600);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action3DoubleCurvedPrePush, true);
                     setPathState(4);
                 }
@@ -291,7 +291,7 @@ public class fourSpecimen extends OpMode {
                 break;
             case 10:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.8);
                     follower.followPath(action10IntakeOne, true);
                     setPathState(11);
                 }
@@ -303,7 +303,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(300);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action11PostIntakeOne, true);
                     setPathState(12);
                 }
@@ -319,14 +319,14 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(14);
                 }
                 break;
             case 14:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action13OuttakeTwo, true);
                     setPathState(15);
                 }
@@ -334,12 +334,12 @@ public class fourSpecimen extends OpMode {
             case 15:
                 if (!follower.isBusy()) {
                     follower.holdPoint(thirteenthPoseOuttakeTwo);
-                    sleep(500);
+                    sleep(300);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(600);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action14PreIntakeTwo, true);
                     setPathState(16);
                 }
@@ -349,7 +349,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.8);
                     follower.followPath(action15IntakeTwo, true);
                     setPathState(17);
                 }
@@ -361,7 +361,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(300);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action16PostIntakeTwo, true);
                     setPathState(18);
                 }
@@ -377,14 +377,14 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action17PreOuttakeThree, true);
                     setPathState(20);
                 }
                 break;
             case 20:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action18OuttakeThree, true);
                     setPathState(21);
                 }
@@ -392,12 +392,12 @@ public class fourSpecimen extends OpMode {
             case 21:
                 if (!follower.isBusy()) {
                     follower.holdPoint(eighteenthPoseOuttakeThree);
-                    sleep(500);
+                    sleep(300);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(600);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action19PreIntakeThree, true);
                     setPathState(22);
                 }
@@ -407,7 +407,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.8);
                     follower.followPath(action20IntakeThree, true);
                     setPathState(23);
                 }
@@ -419,7 +419,7 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(300);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action21PostIntakeThree, true);
                     setPathState(24);
                 }
@@ -435,14 +435,14 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.95);
                     follower.followPath(action22PreOuttakeFourth, true);
                     setPathState(26);
                 }
                 break;
             case 26:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action23OuttakeFourth, true);
                     setPathState(27);
                 }
@@ -450,7 +450,7 @@ public class fourSpecimen extends OpMode {
             case 27:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentyThirdPoseOuttakeFour);
-                    sleep(500);
+                    sleep(300);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
