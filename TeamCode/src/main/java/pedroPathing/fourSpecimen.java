@@ -34,7 +34,7 @@ public class fourSpecimen extends OpMode {
     private int pathState;
     private final Pose startPose = new Pose(135.65, 80.35, Math.toRadians(270));
     private final Pose firstPosePreOuttake = new Pose(110, 76, Math.toRadians(270));
-    private final Pose secondPoseOuttake = new Pose(104.5, 76, Math.toRadians(270));
+    private final Pose secondPoseOuttake = new Pose(107.25, 76, Math.toRadians(270));
     private final Pose thirdPosePrePushControlOne = new Pose(130, 117, Math.toRadians(0));
     private final Pose thirdPosePrePushControlTwo = new Pose(80, 102, Math.toRadians(0));
     private final Pose thirdPosePrePushOne = new Pose(82, 120, Math.toRadians(0));
@@ -42,30 +42,36 @@ public class fourSpecimen extends OpMode {
     private final Pose fifthPosePrePushTwoControlOne = new Pose(78, 110, Math.toRadians(0));
     private final Pose fifthPosePrePushTwo = new Pose(82, 130, Math.toRadians(0));
     private final Pose sixthPosePostPushTwo = new Pose(130, 130, Math.toRadians(0));
-    private final Pose seventhPosePrePushThreeControlOne = new Pose(82, 135.5, Math.toRadians(0));
-    private final Pose seventhPosePrePushThree = new Pose(78, 120, Math.toRadians(0));
+    private final Pose seventhPosePrePushThreeControlOne = new Pose(82, 120, Math.toRadians(0));
+    private final Pose seventhPosePrePushThree = new Pose(82, 135.5, Math.toRadians(0));
     private final Pose eighthPosePostPushThree = new Pose(130, 135.5, Math.toRadians(0));
     private final Pose ninthPosePreIntakeOne = new Pose(120, 113, Math.toRadians(90));
-    private final Pose tenthPoseIntakeOne = new Pose(135.65, 113, Math.toRadians(90));
+    private final Pose tenthPoseIntakeOne = new Pose(136.1, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOne = new Pose(125, 113, Math.toRadians(90));
+    private final Pose eleventhPosePostIntakeOneTurned = new Pose(125, 113, Math.toRadians(270));
+    private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwo = new Pose(110, 74, Math.toRadians(270));
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(104.5, 74, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(107.25, 74, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose fourteenthPosePreIntakeTwo = new Pose(125, 113, Math.toRadians(90));
-    private final Pose fifteenthPoseIntakeTwo = new Pose(135.65, 113, Math.toRadians(90));
+    private final Pose fifteenthPoseIntakeTwo = new Pose(136.1, 113, Math.toRadians(90));
     private final Pose sixteenthPosePostIntakeTwo = new Pose(125, 113, Math.toRadians(90));
+    private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(125, 113, Math.toRadians(270));
+    private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(110, 72, Math.toRadians(270));
-    private final Pose eighteenthPoseOuttakeThree = new Pose(104.5, 72, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(107.25, 72, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(125, 113, Math.toRadians(90));
-    private final Pose twentiethPoseIntakeThree = new Pose(135.65, 113, Math.toRadians(90));
+    private final Pose twentiethPoseIntakeThree = new Pose(136.1, 113, Math.toRadians(90));
     private final Pose twentyFirstPostPoseIntakeThree = new Pose(125, 113, Math.toRadians(90));
+    private final Pose twentyFirstPostPoseIntakeThreeTurned = new Pose(125, 113, Math.toRadians(270));
+    private final Pose twentySecondPosePreOuttakeFourControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFour = new Pose(110, 70, Math.toRadians(270));
-    private final Pose twentyThirdPoseOuttakeFour = new Pose(104.5, 70, Math.toRadians(270));
+    private final Pose twentyThirdPoseOuttakeFour = new Pose(107.25, 70, Math.toRadians(270));
     private final Pose twentyFourthPoseParkControlOne = new Pose(130, 70, Math.toRadians(180));
     private final Pose twentyFourthPosePark = new Pose(130, 130, Math.toRadians(180));
 
-    private PathChain action6PushTwo, action24Park, action9PreIntakeOne, action22PreOuttakeFourth, action23OuttakeFourth, action15IntakeTwo, action21PostIntakeThree, action20IntakeThree, action19PreIntakeThree, action18OuttakeThree, action17PreOuttakeThree,action16PosePostIntakeTwo, action14PreIntakeTwo, action12PreOuttakeTwo, action10IntakeOne, action11PostIntakeOne, action8PushThree, action7CurvedForPushThree, action1PreOuttakeOne, action5CurvedForPushTwo, action2OuttakeOne, action13OuttakeTwo, action3DoubleCurvedPrePush, action4PushOne;
+    private PathChain action6PushTwo, action24Park, action11turn, action9PreIntakeOne, action16Turn, action22PreOuttakeFourth, action23OuttakeFourth, action15IntakeTwo, action21turn, action21PostIntakeThree, action20IntakeThree, action19PreIntakeThree, action18OuttakeThree, action17PreOuttakeThree,action16PostIntakeTwo, action14PreIntakeTwo, action12PreOuttakeTwo, action10IntakeOne, action11PostIntakeOne, action8PushThree, action7CurvedForPushThree, action1PreOuttakeOne, action5CurvedForPushTwo, action2OuttakeOne, action13OuttakeTwo, action3DoubleCurvedPrePush, action4PushOne;
     private DcMotor skibidiSlider = null;
 
 
@@ -125,9 +131,14 @@ public class fourSpecimen extends OpMode {
                 .setLinearHeadingInterpolation(tenthPoseIntakeOne.getHeading(), eleventhPosePostIntakeOne.getHeading())
                 .build();
 
+        action11turn = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(eleventhPosePostIntakeOne), new Point(eleventhPosePostIntakeOneTurned)))
+                .setLinearHeadingInterpolation(eleventhPosePostIntakeOne.getHeading(), eleventhPosePostIntakeOneTurned.getHeading())
+                .build();
+
         action12PreOuttakeTwo = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(eleventhPosePostIntakeOne), new Point(twelfthPosePreOuttakeTwo)))
-                .setLinearHeadingInterpolation(eleventhPosePostIntakeOne.getHeading(), twelfthPosePreOuttakeTwo.getHeading())
+                .addPath(new BezierCurve(new Point(eleventhPosePostIntakeOneTurned), new Point(twelfthPosePreOuttakeTwoControlOne), new Point(twelfthPosePreOuttakeTwo)))
+                .setLinearHeadingInterpolation(eleventhPosePostIntakeOneTurned.getHeading(), twelfthPosePreOuttakeTwo.getHeading())
                 .build();
 
         action13OuttakeTwo = follower.pathBuilder()
@@ -145,14 +156,19 @@ public class fourSpecimen extends OpMode {
                 .setLinearHeadingInterpolation(fourteenthPosePreIntakeTwo.getHeading(), fifteenthPoseIntakeTwo.getHeading())
                 .build();
 
-        action16PosePostIntakeTwo = follower.pathBuilder()
+        action16PostIntakeTwo = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(fifteenthPoseIntakeTwo), new Point(sixteenthPosePostIntakeTwo)))
                 .setLinearHeadingInterpolation(fifteenthPoseIntakeTwo.getHeading(), sixteenthPosePostIntakeTwo.getHeading())
                 .build();
 
+        action16Turn = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(sixteenthPosePostIntakeTwo), new Point(sixteenthPosePostIntakeTwoTurned)))
+                .setLinearHeadingInterpolation(sixteenthPosePostIntakeTwo.getHeading(), sixteenthPosePostIntakeTwoTurned.getHeading())
+                .build();
+
         action17PreOuttakeThree = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(sixteenthPosePostIntakeTwo), new Point(seventeenthPosePreOuttakeThree)))
-                .setLinearHeadingInterpolation(sixteenthPosePostIntakeTwo.getHeading(), seventeenthPosePreOuttakeThree.getHeading())
+                .addPath(new BezierCurve(new Point(sixteenthPosePostIntakeTwoTurned), new Point(seventeenthPosePreOuttakeThreeControlOne), new Point(seventeenthPosePreOuttakeThree)))
+                .setLinearHeadingInterpolation(sixteenthPosePostIntakeTwoTurned.getHeading(), seventeenthPosePreOuttakeThree.getHeading())
                 .build();
 
         action18OuttakeThree = follower.pathBuilder()
@@ -175,9 +191,14 @@ public class fourSpecimen extends OpMode {
                 .setLinearHeadingInterpolation(twentiethPoseIntakeThree.getHeading(), twentyFirstPostPoseIntakeThree.getHeading())
                 .build();
 
+        action21turn = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(twentyFirstPostPoseIntakeThree), new Point(twentyFirstPostPoseIntakeThreeTurned)))
+                .setLinearHeadingInterpolation(twentyFirstPostPoseIntakeThree.getHeading(), twentyFirstPostPoseIntakeThreeTurned.getHeading())
+                .build();
+
         action22PreOuttakeFourth = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(twentyFirstPostPoseIntakeThree), new Point(twentySecondPosePreOuttakeFour)))
-                .setLinearHeadingInterpolation(twentyFirstPostPoseIntakeThree.getHeading(), twentySecondPosePreOuttakeFour.getHeading())
+                .addPath(new BezierCurve(new Point(twentyFirstPostPoseIntakeThreeTurned), new Point(twentySecondPosePreOuttakeFourControlOne), new Point(twentySecondPosePreOuttakeFour)))
+                .setLinearHeadingInterpolation(twentyFirstPostPoseIntakeThreeTurned.getHeading(), twentySecondPosePreOuttakeFour.getHeading())
                 .build();
 
         action23OuttakeFourth = follower.pathBuilder()
@@ -289,22 +310,28 @@ public class fourSpecimen extends OpMode {
                 break;
             case 12:
                 if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.9);
-                    follower.followPath(action12PreOuttakeTwo, true);
+                    follower.followPath(action11turn, true);
                     setPathState(13);
                 }
                 break;
             case 13:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
-                    follower.followPath(action13OuttakeTwo, true);
+                    skibidiSlider.setPower(0.9);
+                    skibidiSlider.setTargetPosition(2050);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.9);
+                    follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(14);
                 }
                 break;
             case 14:
+                if (!follower.isBusy()) {
+                    follower.setMaxPower(0.8);
+                    follower.followPath(action13OuttakeTwo, true);
+                    setPathState(15);
+                }
+                break;
+            case 15:
                 if (!follower.isBusy()) {
                     follower.holdPoint(thirteenthPoseOuttakeTwo);
                     sleep(500);
@@ -314,20 +341,20 @@ public class fourSpecimen extends OpMode {
                     sleep(600);
                     follower.setMaxPower(0.9);
                     follower.followPath(action14PreIntakeTwo, true);
-                    setPathState(15);
+                    setPathState(16);
                 }
                 break;
-            case 15:
+            case 16:
                 if (!follower.isBusy()) {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     follower.setMaxPower(0.6);
                     follower.followPath(action15IntakeTwo, true);
-                    setPathState(16);
+                    setPathState(17);
                 }
                 break;
-            case 16:
+            case 17:
                 if (!follower.isBusy()) {
                     follower.holdPoint(fifteenthPoseIntakeTwo);
                     skibidiSlider.setPower(0.9);
@@ -335,28 +362,34 @@ public class fourSpecimen extends OpMode {
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(300);
                     follower.setMaxPower(0.9);
-                    follower.followPath(action16PosePostIntakeTwo, true);
-                    setPathState(17);
+                    follower.followPath(action16PostIntakeTwo, true);
+                    setPathState(18);
                 }
                 break;
-            case 17:
+            case 18:
+                if (!follower.isBusy()) {
+                    follower.followPath(action16Turn, true);
+                    setPathState(19);
+                }
+                break;
+            case 19:
                 if (!follower.isBusy()) {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     follower.setMaxPower(0.9);
                     follower.followPath(action17PreOuttakeThree, true);
-                    setPathState(18);
+                    setPathState(20);
                 }
                 break;
-            case 18:
+            case 20:
                 if (!follower.isBusy()) {
                     follower.setMaxPower(0.8);
                     follower.followPath(action18OuttakeThree, true);
-                    setPathState(19);
+                    setPathState(21);
                 }
                 break;
-            case 19:
+            case 21:
                 if (!follower.isBusy()) {
                     follower.holdPoint(eighteenthPoseOuttakeThree);
                     sleep(500);
@@ -366,20 +399,20 @@ public class fourSpecimen extends OpMode {
                     sleep(600);
                     follower.setMaxPower(0.9);
                     follower.followPath(action19PreIntakeThree, true);
-                    setPathState(20);
+                    setPathState(22);
                 }
                 break;
-            case 20:
+            case 22:
                 if (!follower.isBusy()) {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     follower.setMaxPower(0.6);
                     follower.followPath(action20IntakeThree, true);
-                    setPathState(21);
+                    setPathState(23);
                 }
                 break;
-            case 21:
+            case 23:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentiethPoseIntakeThree);
                     skibidiSlider.setPower(0.9);
@@ -388,27 +421,33 @@ public class fourSpecimen extends OpMode {
                     sleep(300);
                     follower.setMaxPower(0.9);
                     follower.followPath(action21PostIntakeThree, true);
-                    setPathState(22);
+                    setPathState(24);
                 }
                 break;
-            case 22:
+            case 24:
+                if (!follower.isBusy()) {
+                    follower.followPath(action21turn, true);
+                    setPathState(25);
+                }
+                break;
+            case 25:
                 if (!follower.isBusy()) {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     follower.setMaxPower(0.9);
                     follower.followPath(action22PreOuttakeFourth, true);
-                    setPathState(23);
+                    setPathState(26);
                 }
                 break;
-            case 23:
+            case 26:
                 if (!follower.isBusy()) {
                     follower.setMaxPower(0.8);
                     follower.followPath(action23OuttakeFourth, true);
-                    setPathState(24);
+                    setPathState(27);
                 }
                 break;
-            case 24:
+            case 27:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentyThirdPoseOuttakeFour);
                     sleep(500);
@@ -418,9 +457,9 @@ public class fourSpecimen extends OpMode {
                     sleep(600);
                     follower.setMaxPower(1);
                     follower.followPath(action24Park, true);
-                    setPathState(25);
+                    setPathState(28);
                 }
-            case 25:
+            case 28:
                 if (!follower.isBusy()) {
                     setPathState(-1);
                 }
