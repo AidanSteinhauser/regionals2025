@@ -35,8 +35,8 @@ public class fourSpecimen extends OpMode {
     private final Pose startPose = new Pose(135.65, 80.35, Math.toRadians(270));
     private final Pose firstPosePreOuttake = new Pose(110, 76, Math.toRadians(270));
     private final Pose secondPoseOuttake = new Pose(107.25, 76, Math.toRadians(270));
-    private final Pose thirdPosePrePushControlOne = new Pose(130, 118, Math.toRadians(0));
-    private final Pose thirdPosePrePushControlTwo = new Pose(80, 103, Math.toRadians(0));
+    private final Pose thirdPosePrePushControlOne = new Pose(130, 117.5, Math.toRadians(0));
+    private final Pose thirdPosePrePushControlTwo = new Pose(80, 102.5, Math.toRadians(0));
     private final Pose thirdPosePrePushOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose fourthPosePostPushOne = new Pose(130, 120, Math.toRadians(0));
     private final Pose fifthPosePrePushTwoControlOne = new Pose(78, 110, Math.toRadians(0));
