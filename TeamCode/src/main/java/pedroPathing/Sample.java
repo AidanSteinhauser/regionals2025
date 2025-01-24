@@ -133,7 +133,7 @@ public class Sample extends OpMode {
                 }
                 break;
             case 3:
-                if (((!follower.isBusy()) && sliderMotor.getCurrentPosition() > 2170) && pidgeonMotor.getCurrentPosition() > 4100) {
+                if (!follower.isBusy()) {
                     follower.holdPoint(scoringPose);
                     pidgeonServo.setPosition(0.9);
                     sleep(2000);
@@ -187,8 +187,7 @@ public class Sample extends OpMode {
                 }
                 break;
             case 6:
-                if (((!follower.isBusy()) && sliderMotor.getCurrentPosition() > 2170) && pidgeonMotor.getCurrentPosition() > 4100) {
-                    follower.holdPoint(scoringPose);
+                if (!follower.isBusy()) {
                     pidgeonServo.setPosition(0.9);
                     sleep(2000);
                     releaseServo.setPosition(1);
@@ -241,7 +240,7 @@ public class Sample extends OpMode {
                 }
                 break;
             case 9:
-                if (((!follower.isBusy()) && sliderMotor.getCurrentPosition() > 2170) && pidgeonMotor.getCurrentPosition() > 4100) {
+                if (!follower.isBusy()) {
                     follower.holdPoint(scoringPose);
                     pidgeonServo.setPosition(0.9);
                     sleep(2000);

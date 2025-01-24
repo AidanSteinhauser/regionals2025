@@ -210,7 +210,7 @@ public class fourSpecimenNoPush extends OpMode {
                 break;
             case 1:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action1PreOuttakeOne, true);
                     skibidiSlider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     skibidiSlider.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -222,7 +222,7 @@ public class fourSpecimenNoPush extends OpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action2OuttakeOne, true);
                     setPathState(3);
                 }
@@ -235,7 +235,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action3DoubleCurvedPrePush, true);
                     setPathState(4);
                 }
@@ -269,7 +269,8 @@ public class fourSpecimenNoPush extends OpMode {
                 break;
             case 8:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.6);
+
                     follower.followPath(action10IntakeOne, true);
                     setPathState(9);
                 }
@@ -281,7 +282,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action11PostIntakeOne, true);
                     setPathState(10);
                 }
@@ -297,14 +298,14 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(12);
                 }
                 break;
             case 12:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action13OuttakeTwo, true);
                     setPathState(13);
                 }
@@ -317,7 +318,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action14PreIntakeTwo, true);
                     setPathState(14);
                 }
@@ -327,7 +328,8 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.6);
+
                     follower.followPath(action15IntakeTwo, true);
                     setPathState(15);
                 }
@@ -339,7 +341,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action16PostIntakeTwo, true);
                     setPathState(16);
                 }
@@ -355,14 +357,14 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action17PreOuttakeThree, true);
                     setPathState(18);
                 }
                 break;
             case 18:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action18OuttakeThree, true);
                     setPathState(19);
                 }
@@ -375,7 +377,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action19PreIntakeThree, true);
                     setPathState(20);
                 }
@@ -385,7 +387,8 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.6);
+
                     follower.followPath(action20IntakeThree, true);
                     setPathState(21);
                 }
@@ -397,7 +400,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action21PostIntakeThree, true);
                     setPathState(22);
                 }
@@ -413,14 +416,14 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action22PreOuttakeFourth, true);
                     setPathState(24);
                 }
                 break;
             case 24:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action23OuttakeFourth, true);
                     setPathState(25);
                 }
@@ -433,7 +436,7 @@ public class fourSpecimenNoPush extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(1);;
                     follower.followPath(action24Park, true);
                     setPathState(26);
                 }
