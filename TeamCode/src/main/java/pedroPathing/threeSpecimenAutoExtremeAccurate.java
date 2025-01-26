@@ -92,7 +92,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                 .build();
 
         action4PushOne = follower.pathBuilder()
-                .setZeroPowerAccelerationMultiplier(4)
+
                 .addPath(new BezierLine(new Point(thirdPosePrePushOne), new Point(fourthPosePostPushOne)))
                 .setLinearHeadingInterpolation(thirdPosePrePushOne.getHeading(), fourthPosePostPushOne.getHeading())
                 .build();
@@ -103,7 +103,6 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                 .build();
 
         action6PushTwo = follower.pathBuilder()
-                .setZeroPowerAccelerationMultiplier(4)
                 .addPath(new BezierLine(new Point(fifthPosePrePushTwo), new Point(sixthPosePostPushTwo)))
                 .setLinearHeadingInterpolation(fifthPosePrePushTwo.getHeading(), sixthPosePostPushTwo.getHeading())
                 .build();
