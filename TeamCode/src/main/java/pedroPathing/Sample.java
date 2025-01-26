@@ -122,12 +122,13 @@ public class Sample extends OpMode {
                     pidgeonMotor.setPower(1);
                     pidgeonMotor.setTargetPosition(4130);
                     pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    sleep(500);
                     sliderMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     sliderMotor.setPower(1);
                     sliderMotor.setTargetPosition(2190);
                     sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(4000);
+                    sleep(2000);
                     follower.followPath(action3, true);
                     setPathState(3);
                 }
@@ -135,7 +136,8 @@ public class Sample extends OpMode {
             case 3:
                 if (!follower.isBusy()) {
                     follower.holdPoint(scoringPose);
-                    pidgeonServo.setPosition(0.9);
+                    sleep(50);
+                    pidgeonServo.setPosition(1);
                     sleep(2000);
                     releaseServo.setPosition(1);
                     sleep(2000);
@@ -242,7 +244,7 @@ public class Sample extends OpMode {
             case 9:
                 if (!follower.isBusy()) {
                     follower.holdPoint(scoringPose);
-                    pidgeonServo.setPosition(0.9);
+                    pidgeonServo.setPosition(1);
                     sleep(2000);
                     releaseServo.setPosition(1);
                     sleep(2000);
@@ -311,7 +313,6 @@ public class Sample extends OpMode {
         pidgeonMotor = hardwareMap.get(DcMotor.class, "pidgeonMotor");
         sliderMotor = hardwareMap.get(DcMotor.class, "sliderMotor");
         pidgeonServo = hardwareMap.get(Servo.class, "pidgeonServo");
-        releaseServo = hardwareMap.get(Servo.class, "releaseServo");
         releaseServo = hardwareMap.get(Servo.class, "releaseServo");
 
         telemetryA = new MultipleTelemetry(this.telemetry, FtcDashboard.getInstance().getTelemetry());
