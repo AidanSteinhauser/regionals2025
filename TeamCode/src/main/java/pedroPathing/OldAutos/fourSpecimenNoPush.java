@@ -1,4 +1,4 @@
-package pedroPathing;
+package pedroPathing.OldAutos;
 
 
 import static android.os.SystemClock.sleep;
@@ -14,6 +14,7 @@ import com.pedropathing.pathgen.Point;
 import com.pedropathing.util.Constants;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -22,9 +23,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
-
-@Autonomous(name = "fourSpecimenAndPush", group = "Regionals")
-public class fourSpecimenAndPush extends OpMode {
+@Disabled
+@Autonomous(name = "fourSpecimenNoPush", group = "Regionals")
+public class fourSpecimenNoPush extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;
@@ -106,19 +107,9 @@ public class fourSpecimenAndPush extends OpMode {
                 .setLinearHeadingInterpolation(fifthPosePrePushTwo.getHeading(), sixthPosePostPushTwo.getHeading())
                 .build();
 
-        action7CurvedForPushThree = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(sixthPosePostPushTwo), new Point(seventhPosePrePushThreeControlOne), new Point(seventhPosePrePushThree)))
-                .setLinearHeadingInterpolation(sixthPosePostPushTwo.getHeading(), seventhPosePrePushThree.getHeading())
-                .build();
-
-        action8PushThree = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(seventhPosePrePushThree), new Point(eighthPosePostPushThree)))
-                .setLinearHeadingInterpolation(seventhPosePrePushThree.getHeading(), eighthPosePostPushThree.getHeading())
-                .build();
-
         action9PreIntakeOne = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(eighthPosePostPushThree), new Point(ninthPosePreIntakeOne)))
-                .setLinearHeadingInterpolation(eighthPosePostPushThree.getHeading(), ninthPosePreIntakeOne.getHeading())
+                .addPath(new BezierLine(new Point(sixthPosePostPushTwo), new Point(ninthPosePreIntakeOne)))
+                .setLinearHeadingInterpolation(sixthPosePostPushTwo.getHeading(), ninthPosePreIntakeOne.getHeading())
                 .build();
 
         action10IntakeOne = follower.pathBuilder()
@@ -220,7 +211,7 @@ public class fourSpecimenAndPush extends OpMode {
                 break;
             case 1:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action1PreOuttakeOne, true);
                     skibidiSlider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     skibidiSlider.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -232,7 +223,7 @@ public class fourSpecimenAndPush extends OpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action2OuttakeOne, true);
                     setPathState(3);
                 }
@@ -244,8 +235,8 @@ public class fourSpecimenAndPush extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(600);
-                    follower.setMaxPower(1);
+                    sleep(500);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action3DoubleCurvedPrePush, true);
                     setPathState(4);
                 }
@@ -273,193 +264,184 @@ public class fourSpecimenAndPush extends OpMode {
                 break;
             case 7:
                 if (!follower.isBusy()) {
-                    follower.followPath(action7CurvedForPushThree, true);
+                    follower.followPath(action9PreIntakeOne, true);
                     setPathState(8);
                 }
                 break;
             case 8:
                 if (!follower.isBusy()) {
-                    follower.followPath(action8PushThree, true);
+                    follower.setMaxPower(0.6);
+
+                    follower.followPath(action10IntakeOne, true);
                     setPathState(9);
                 }
                 break;
             case 9:
-                if (!follower.isBusy()) {
-                    follower.followPath(action9PreIntakeOne, true);
-                    setPathState(10);
-                }
-                break;
-            case 10:
-                if (!follower.isBusy()) {
-                    follower.setMaxPower(0.8);
-                    follower.followPath(action10IntakeOne, true);
-                    setPathState(11);
-                }
-                break;
-            case 11:
                 if (!follower.isBusy()) {
                     follower.holdPoint(tenthPoseIntakeOne);
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action11PostIntakeOne, true);
+                    setPathState(10);
+                }
+                break;
+            case 10:
+                if (!follower.isBusy()) {
+                    follower.followPath(action11turn, true);
+                    setPathState(11);
+                }
+                break;
+            case 11:
+                if (!follower.isBusy()) {
+                    skibidiSlider.setPower(0.9);
+                    skibidiSlider.setTargetPosition(2050);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.9);;
+                    follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(12);
                 }
                 break;
             case 12:
                 if (!follower.isBusy()) {
-                    follower.followPath(action11turn, true);
+                  follower.setMaxPower(0.8);
+                    follower.followPath(action13OuttakeTwo, true);
                     setPathState(13);
                 }
                 break;
             case 13:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);
-                    follower.followPath(action12PreOuttakeTwo, true);
-                    setPathState(14);
-                }
-                break;
-            case 14:
-                if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
-                    follower.followPath(action13OuttakeTwo, true);
-                    setPathState(15);
-                }
-                break;
-            case 15:
                 if (!follower.isBusy()) {
                     follower.holdPoint(thirteenthPoseOuttakeTwo);
                     sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(600);
-                    follower.setMaxPower(1);
+                    sleep(500);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action14PreIntakeTwo, true);
-                    setPathState(16);
+                    setPathState(14);
                 }
                 break;
-            case 16:
+            case 14:
                 if (!follower.isBusy()) {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.6);
+
                     follower.followPath(action15IntakeTwo, true);
-                    setPathState(17);
+                    setPathState(15);
                 }
                 break;
-            case 17:
+            case 15:
                 if (!follower.isBusy()) {
                     follower.holdPoint(fifteenthPoseIntakeTwo);
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action16PostIntakeTwo, true);
+                    setPathState(16);
+                }
+                break;
+            case 16:
+                if (!follower.isBusy()) {
+                    follower.followPath(action16Turn, true);
+                    setPathState(17);
+                }
+                break;
+            case 17:
+                if (!follower.isBusy()) {
+                    skibidiSlider.setPower(0.9);
+                    skibidiSlider.setTargetPosition(2050);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.9);;
+                    follower.followPath(action17PreOuttakeThree, true);
                     setPathState(18);
                 }
                 break;
             case 18:
                 if (!follower.isBusy()) {
-                    follower.followPath(action16Turn, true);
+                  follower.setMaxPower(0.8);
+                    follower.followPath(action18OuttakeThree, true);
                     setPathState(19);
                 }
                 break;
             case 19:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);
-                    follower.followPath(action17PreOuttakeThree, true);
-                    setPathState(20);
-                }
-                break;
-            case 20:
-                if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
-                    follower.followPath(action18OuttakeThree, true);
-                    setPathState(21);
-                }
-                break;
-            case 21:
                 if (!follower.isBusy()) {
                     follower.holdPoint(eighteenthPoseOuttakeThree);
                     sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(600);
-                    follower.setMaxPower(1);
+                    sleep(500);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action19PreIntakeThree, true);
-                    setPathState(22);
+                    setPathState(20);
                 }
                 break;
-            case 22:
+            case 20:
                 if (!follower.isBusy()) {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.6);
+
                     follower.followPath(action20IntakeThree, true);
-                    setPathState(23);
+                    setPathState(21);
                 }
                 break;
-            case 23:
+            case 21:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentiethPoseIntakeThree);
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);;
                     follower.followPath(action21PostIntakeThree, true);
+                    setPathState(22);
+                }
+                break;
+            case 22:
+                if (!follower.isBusy()) {
+                    follower.followPath(action21turn, true);
+                    setPathState(23);
+                }
+                break;
+            case 23:
+                if (!follower.isBusy()) {
+                    skibidiSlider.setPower(0.9);
+                    skibidiSlider.setTargetPosition(2050);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.9);;
+                    follower.followPath(action22PreOuttakeFourth, true);
                     setPathState(24);
                 }
                 break;
             case 24:
                 if (!follower.isBusy()) {
-                    follower.followPath(action21turn, true);
+                  follower.setMaxPower(0.8);
+                    follower.followPath(action23OuttakeFourth, true);
                     setPathState(25);
                 }
                 break;
             case 25:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);
-                    follower.followPath(action22PreOuttakeFourth, true);
-                    setPathState(26);
-                }
-                break;
-            case 26:
-                if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
-                    follower.followPath(action23OuttakeFourth, true);
-                    setPathState(27);
-                }
-                break;
-            case 27:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentyThirdPoseOuttakeFour);
                     sleep(175);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(600);
-                    follower.setMaxPower(1);
+                    sleep(500);
+                    follower.setMaxPower(1);;
                     follower.followPath(action24Park, true);
-                    setPathState(28);
+                    setPathState(26);
                 }
-            case 28:
+            case 26:
                 if (!follower.isBusy()) {
                     setPathState(-1);
                 }
