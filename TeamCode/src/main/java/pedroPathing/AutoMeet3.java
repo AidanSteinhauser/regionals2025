@@ -1,4 +1,4 @@
-package pedroPathing.OldAutos;
+package pedroPathing;
 
 
 import static android.os.SystemClock.sleep;
@@ -10,9 +10,9 @@ import com.pedropathing.pathgen.BezierLine;
 import com.pedropathing.pathgen.PathChain;
 import com.pedropathing.pathgen.Point;
 import com.pedropathing.util.Constants;
+import com.pedropathing.util.Drawing;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -20,8 +20,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@Disabled
-@Autonomous(name = "AutoMeet3", group = "Regionals")
+
+@Autonomous(name = "AutoMeet3", group = "Meet3")
 public class AutoMeet3 extends OpMode {
     private Follower follower;
     private Timer pathTimer;
@@ -342,6 +342,7 @@ public class AutoMeet3 extends OpMode {
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
         telemetry.addData("heading", follower.getPose().getHeading());
+        Drawing.drawDebug(follower);
         telemetry.update();
     }
 
