@@ -24,8 +24,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@Autonomous(name = "threeSpecExtreme", group = "Regionals")
-public class threeSpecExtreme extends OpMode {
+@Autonomous(name = "threeSpecBasic", group = "Regionals")
+public class threeSpecBasic extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;

@@ -110,25 +110,24 @@ public class Sample extends OpMode {
             case 1:
                 if (!follower.isBusy()) {
                     follower.followPath(action2, true);
+                    pidgeonMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    pidgeonMotor.setPower(1);
+                    pidgeonMotor.setTargetPosition(4130);
+                    pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     setPathState(2);
                 }
                 break;
             case 2:
                 if (!follower.isBusy()) {
                     follower.holdPoint(prescorePose);
-                    sleep(2000);
-                    pidgeonMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                    pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-                    pidgeonMotor.setPower(1);
-                    pidgeonMotor.setTargetPosition(4130);
-                    pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
                     sliderMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     sliderMotor.setPower(1);
                     sliderMotor.setTargetPosition(2190);
                     sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(2000);
+                    sleep(1500);
                     follower.followPath(action3, true);
                     setPathState(3);
                 }
@@ -136,7 +135,7 @@ public class Sample extends OpMode {
             case 3:
                 if (!follower.isBusy()) {
                     follower.holdPoint(scoringPose);
-                    sleep(50);
+                    sleep(500);
                     pidgeonServo.setPosition(1);
                     sleep(2000);
                     releaseServo.setPosition(1);
@@ -154,7 +153,6 @@ public class Sample extends OpMode {
                     pidgeonMotor.setTargetPosition(882);
                     pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(2000);
-                    sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     follower.followPath(action4, true);
                     setPathState(4);
                 }
@@ -167,6 +165,11 @@ public class Sample extends OpMode {
                     pidgeonMotor.setTargetPosition(200);
                     pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(2000);
+                    pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    pidgeonMotor.setPower(1);
+                    pidgeonMotor.setTargetPosition(4130);
+                    pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    sleep(2000);
                     follower.followPath(action5, true);
                     setPathState(5);
                 }
@@ -174,23 +177,21 @@ public class Sample extends OpMode {
             case 5:
                 if (!follower.isBusy()) {
                     follower.holdPoint(prescorePose);
-                    sleep(2000);
-                    pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-                    pidgeonMotor.setPower(1);
-                    pidgeonMotor.setTargetPosition(4130);
-                    pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    sleep(500);
                     sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     sliderMotor.setPower(1);
                     sliderMotor.setTargetPosition(2190);
                     sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(4000);
+                    sleep(2000);
                     follower.followPath(action6, true);
                     setPathState(6);
                 }
                 break;
             case 6:
                 if (!follower.isBusy()) {
-                    pidgeonServo.setPosition(0.9);
+                    follower.holdPoint(scoringPose);
+                    sleep(500);
+                    pidgeonServo.setPosition(1);
                     sleep(2000);
                     releaseServo.setPosition(1);
                     sleep(2000);
@@ -207,7 +208,6 @@ public class Sample extends OpMode {
                     pidgeonMotor.setTargetPosition(882);
                     pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(2000);
-                    sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     follower.followPath(action7, true);
                     setPathState(7);
                 }

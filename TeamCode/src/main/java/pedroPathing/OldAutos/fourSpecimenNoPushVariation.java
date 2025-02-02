@@ -1,10 +1,8 @@
-package pedroPathing;
+package pedroPathing.OldAutos;
 
 
 import static android.os.SystemClock.sleep;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.localization.Pose;
 import com.pedropathing.pathgen.BezierCurve;
@@ -12,8 +10,10 @@ import com.pedropathing.pathgen.BezierLine;
 import com.pedropathing.pathgen.PathChain;
 import com.pedropathing.pathgen.Point;
 import com.pedropathing.util.Constants;
+import com.pedropathing.util.Drawing;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -22,9 +22,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
-
-@Autonomous(name = "fourSpecimenTRUEFAST", group = "Regionals")
-public class fourSpecimenTRUEFAST extends OpMode {
+@Disabled
+@Autonomous(name = "fourSpecimenNoPushVariation", group = "Regionals")
+public class fourSpecimenNoPushVariation extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;
@@ -45,29 +45,29 @@ public class fourSpecimenTRUEFAST extends OpMode {
     private final Pose seventhPosePrePushThreeControlOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose seventhPosePrePushThree = new Pose(82, 135.5, Math.toRadians(0));
     private final Pose eighthPosePostPushThree = new Pose(130, 135.5, Math.toRadians(0));
-    private final Pose ninthPosePreIntakeOne = new Pose(100, 113, Math.toRadians(90));
-    private final Pose tenthPoseIntakeOne = new Pose(137.5, 113, Math.toRadians(90));
+    private final Pose ninthPosePreIntakeOne = new Pose(120, 113, Math.toRadians(90));
+    private final Pose tenthPoseIntakeOne = new Pose(136.5, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOne = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOneTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 72, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 72, Math.toRadians(270));
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(108.5, 72, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(110.5, 72, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose fourteenthPosePreIntakeTwo = new Pose(116, 113, Math.toRadians(90));
-    private final Pose fifteenthPoseIntakeTwo = new Pose(136.75, 113, Math.toRadians(90));
-    private final Pose sixteenthPosePostIntakeTwo = new Pose(126.25, 113, Math.toRadians(90));
+    private final Pose fifteenthPoseIntakeTwo = new Pose(136.5, 113, Math.toRadians(90));
+    private final Pose sixteenthPosePostIntakeTwo = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(115, 68, Math.toRadians(270));
-    private final Pose eighteenthPoseOuttakeThree = new Pose(108, 68, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(112.5, 68, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(118, 113, Math.toRadians(95));
-    private final Pose twentiethPoseIntakeThree = new Pose(137.25, 113, Math.toRadians(95));
+    private final Pose twentiethPoseIntakeThree = new Pose(135, 113, Math.toRadians(95));
     private final Pose twentyFirstPostPoseIntakeThree = new Pose(126.5, 113, Math.toRadians(95));
     private final Pose twentyFirstPostPoseIntakeThreeTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFourControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFour = new Pose(115, 70, Math.toRadians(270));
-    private final Pose twentyThirdPoseOuttakeFour = new Pose(108.25, 70, Math.toRadians(270));
+    private final Pose twentyThirdPoseOuttakeFour = new Pose(112, 70, Math.toRadians(270));
     private final Pose twentyFourthPoseParkControlOne = new Pose(130, 70, Math.toRadians(180));
     private final Pose twentyFourthPosePark = new Pose(130, 130, Math.toRadians(180));
 
@@ -205,7 +205,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                 break;
             case 1:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.9);
                     follower.followPath(action1PreOuttakeOne, true);
                     skibidiSlider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     skibidiSlider.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -217,7 +217,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                  follower.setMaxPower(1);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action2OuttakeOne, true);
                     setPathState(3);
                 }
@@ -230,7 +230,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.8);
                     follower.followPath(action3DoubleCurvedPrePush, true);
                     setPathState(4);
                 }
@@ -277,7 +277,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);
+                    follower.setMaxPower(0.8);
                     follower.followPath(action11PostIntakeOne, true);
                     setPathState(10);
                 }
@@ -287,14 +287,14 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(11);
                 }
                 break;
             case 11:
                 if (!follower.isBusy()) {
-                  follower.setMaxPower(1);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action13OuttakeTwo, true);
                     setPathState(12);
                 }
@@ -307,7 +307,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action14PreIntakeTwo, true);
                     setPathState(13);
                 }
@@ -330,7 +330,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action16PostIntakeTwo, true);
                     setPathState(15);
                 }
@@ -340,14 +340,14 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action17PreOuttakeThree, true);
                     setPathState(16);
                 }
                 break;
             case 16:
                 if (!follower.isBusy()) {
-                  follower.setMaxPower(1);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action18OuttakeThree, true);
                     setPathState(17);
                 }
@@ -360,7 +360,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action19PreIntakeThree, true);
                     setPathState(18);
                 }
@@ -383,7 +383,7 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(175);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action21PostIntakeThree, true);
                     setPathState(20);
                 }
@@ -393,14 +393,14 @@ public class fourSpecimenTRUEFAST extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(1);;
+                    follower.setMaxPower(0.8);;
                     follower.followPath(action22PreOuttakeFourth, true);
                     setPathState(21);
                 }
                 break;
             case 21:
                 if (!follower.isBusy()) {
-                  follower.setMaxPower(1);
+                  follower.setMaxPower(0.8);
                     follower.followPath(action23OuttakeFourth, true);
                     setPathState(22);
                 }
@@ -444,10 +444,9 @@ public class fourSpecimenTRUEFAST extends OpMode {
         telemetry.addData("heading", follower.getPose().getHeading());
         telemetry.update();
 
-        telemetryA = new MultipleTelemetry(this.telemetry, FtcDashboard.getInstance().getTelemetry());
+        Drawing.drawDebug(follower);
         telemetryA.update();
     }
-
 
     @Override
     public void init() {

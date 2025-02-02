@@ -23,8 +23,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@Autonomous(name = "threeSpecANDPushDELUXE", group = "Regionals")
-public class threeSpecANDPushDELUXE extends OpMode {
+@Autonomous(name = "threeSpecANDPush", group = "Regionals")
+public class threeSpecANDPush extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;
@@ -45,13 +45,13 @@ public class threeSpecANDPushDELUXE extends OpMode {
     private final Pose seventhPosePrePushThreeControlOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose seventhPosePrePushThree = new Pose(82, 135.5, Math.toRadians(0));
     private final Pose eighthPosePostPushThree = new Pose(130, 135.5, Math.toRadians(0));
-    private final Pose ninthPosePreIntakeOne = new Pose(100, 113, Math.toRadians(90));
-    private final Pose tenthPoseIntakeOne = new Pose(137.5, 113, Math.toRadians(90));
+    private final Pose ninthPosePreIntakeOne = new Pose(110, 113, Math.toRadians(90));
+    private final Pose tenthPoseIntakeOne = new Pose(138, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOne = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOneTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 72, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 72, Math.toRadians(270));
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(108.5, 72, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(110.5, 72, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose fourteenthPosePreIntakeTwo = new Pose(116, 113, Math.toRadians(90));
     private final Pose fifteenthPoseIntakeTwo = new Pose(136.75, 113, Math.toRadians(90));
@@ -59,7 +59,7 @@ public class threeSpecANDPushDELUXE extends OpMode {
     private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(115, 68, Math.toRadians(270));
-    private final Pose eighteenthPoseOuttakeThree = new Pose(108, 68, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(110.5, 68, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(118, 113, Math.toRadians(95));
     private final Pose twentiethPoseIntakeThree = new Pose(137.25, 113, Math.toRadians(95));
