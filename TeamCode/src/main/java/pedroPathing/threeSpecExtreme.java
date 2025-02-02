@@ -15,7 +15,6 @@ import com.pedropathing.util.Constants;
 import com.pedropathing.util.Drawing;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -24,9 +23,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
-@Disabled
-@Autonomous(name = "threeSpecimenAutoExtremeAccurate", group = "Regionals")
-public class threeSpecimenAutoExtremeAccurate extends OpMode {
+
+@Autonomous(name = "threeSpecExtreme", group = "Regionals")
+public class threeSpecExtreme extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;
@@ -48,20 +47,20 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
     private final Pose seventhPosePrePushThree = new Pose(82, 135.5, Math.toRadians(0));
     private final Pose eighthPosePostPushThree = new Pose(130, 135.5, Math.toRadians(0));
     private final Pose ninthPosePreIntakeOne = new Pose(100, 113, Math.toRadians(90));
-    private final Pose tenthPoseIntakeOne = new Pose(136.5, 113, Math.toRadians(90));
+    private final Pose tenthPoseIntakeOne = new Pose(137.75, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOne = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOneTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 72, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 72, Math.toRadians(270));
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(107.8, 72, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(106.5, 72, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose fourteenthPosePreIntakeTwo = new Pose(116, 113, Math.toRadians(90));
-    private final Pose fifteenthPoseIntakeTwo = new Pose(136.35, 113, Math.toRadians(90));
-    private final Pose sixteenthPosePostIntakeTwo = new Pose(126.25, 113, Math.toRadians(90));
+    private final Pose fifteenthPoseIntakeTwo = new Pose(137.75, 113, Math.toRadians(90));
+    private final Pose sixteenthPosePostIntakeTwo = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(115, 68, Math.toRadians(270));
-    private final Pose eighteenthPoseOuttakeThree = new Pose(108, 68, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(107.5, 68, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(118, 113, Math.toRadians(95));
     private final Pose twentiethPoseIntakeThree = new Pose(135, 113, Math.toRadians(95));
@@ -69,9 +68,9 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
     private final Pose twentyFirstPostPoseIntakeThreeTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFourControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFour = new Pose(115, 70, Math.toRadians(270));
-    private final Pose twentyThirdPoseOuttakeFour = new Pose(112, 70, Math.toRadians(270));
+    private final Pose twentyThirdPoseOuttakeFour = new Pose(112.25, 70, Math.toRadians(270));
     private final Pose twentyFourthPoseParkControlOne = new Pose(130, 70, Math.toRadians(180));
-    private final Pose twentyFourthPosePark = new Pose(135, 125, Math.toRadians(180));
+    private final Pose twentyFourthPosePark = new Pose(130, 130, Math.toRadians(180));
 
     private PathChain action6PushTwo, actionPARK, action11turn, actionPREINTAKEone, action16Turn, action22PreOuttakeFourth, action23OuttakeFourth, action15IntakeTwo, action21turn, action21PostIntakeThree, action20IntakeThree, action19PreIntakeThree, action18OuttakeThree, action17PreOuttakeThree,action16PostIntakeTwo, action14PreIntakeTwo, action12PreOuttakeTwo, action10IntakeOne, action11PostIntakeOne, action8PushThree, action7CurvedForPushThree, action1PreOuttakeOne, action5CurvedForPushTwo, action2OuttakeOne, action13OuttakeTwo, action3DoubleCurvedPrePush, action4PushOne;
     private DcMotor skibidiSlider = null;
@@ -94,7 +93,6 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                 .build();
 
         action4PushOne = follower.pathBuilder()
-
                 .addPath(new BezierLine(new Point(thirdPosePrePushOne), new Point(fourthPosePostPushOne)))
                 .setLinearHeadingInterpolation(thirdPosePrePushOne.getHeading(), fourthPosePostPushOne.getHeading())
                 .build();
@@ -208,7 +206,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                 break;
             case 1:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action1PreOuttakeOne, true);
                     skibidiSlider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     skibidiSlider.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -220,7 +218,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action2OuttakeOne, true);
                     setPathState(3);
                 }
@@ -233,7 +231,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(650);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action3DoubleCurvedPrePush, true);
                     setPathState(4);
                 }
@@ -243,20 +241,20 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action4PushOne, true);
                     setPathState(5);
                 }
             case 5:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(actionPREINTAKEone, true);
                     setPathState(6);
                 }
                 break;
             case 6:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.4);
+                    follower.setMaxPower(0.6);
                     follower.followPath(action10IntakeOne, true);
                     setPathState(7);
                 }
@@ -268,7 +266,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(200);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action11PostIntakeOne, true);
                     setPathState(8);
                 }
@@ -278,14 +276,14 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(9);
                 }
                 break;
             case 9:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action13OuttakeTwo, true);
                     setPathState(10);
                 }
@@ -298,7 +296,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(650);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action14PreIntakeTwo, true);
                     setPathState(11);
                 }
@@ -308,7 +306,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.4);
+                    follower.setMaxPower(0.6);
                     follower.followPath(action15IntakeTwo, true);
                     setPathState(12);
                 }
@@ -320,7 +318,7 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(200);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action16PostIntakeTwo, true);
                     setPathState(13);
                 }
@@ -330,14 +328,14 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
                     skibidiSlider.setPower(0.9);
                     skibidiSlider.setTargetPosition(2050);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action17PreOuttakeThree, true);
                     setPathState(14);
                 }
                 break;
             case 14:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action18OuttakeThree, true);
                     setPathState(15);
                 }
@@ -380,10 +378,10 @@ public class threeSpecimenAutoExtremeAccurate extends OpMode {
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
         telemetry.addData("heading", follower.getPose().getHeading());
+        Drawing.drawDebug(follower);
         telemetry.update();
 
         telemetryA = new MultipleTelemetry(this.telemetry, FtcDashboard.getInstance().getTelemetry());
-        Drawing.drawDebug(follower);
         telemetryA.update();
     }
 
