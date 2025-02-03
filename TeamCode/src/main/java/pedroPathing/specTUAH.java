@@ -12,19 +12,21 @@ import com.pedropathing.pathgen.BezierLine;
 import com.pedropathing.pathgen.PathChain;
 import com.pedropathing.pathgen.Point;
 import com.pedropathing.util.Constants;
+import com.pedropathing.util.Drawing;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
-@Disabled
-@Autonomous(name = "threeSpecANDPushSUPERdeluXe", group = "Regionals")
-public class threeSpecANDPushSUPERdeluXe extends OpMode {
+
+@Autonomous(name = "specTUAH", group = "Regionals")
+public class specTUAH extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;
@@ -45,34 +47,40 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
     private final Pose seventhPosePrePushThreeControlOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose seventhPosePrePushThree = new Pose(82, 135.5, Math.toRadians(0));
     private final Pose eighthPosePostPushThree = new Pose(130, 135.5, Math.toRadians(0));
-    private final Pose ninthPosePreIntakeOne = new Pose(100, 113, Math.toRadians(90));
-    private final Pose tenthPoseIntakeOne = new Pose(137.5, 113, Math.toRadians(90));
+    private final Pose ninthPosePreIntakeOne = new Pose(120, 113, Math.toRadians(90));
+    private final Pose tenthPoseIntakeOne = new Pose(137.75, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOne = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOneTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 72, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 72, Math.toRadians(270));
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(108.5, 72, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(106.5, 72, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose fourteenthPosePreIntakeTwo = new Pose(116, 113, Math.toRadians(90));
-    private final Pose fifteenthPoseIntakeTwo = new Pose(136.75, 113, Math.toRadians(90));
-    private final Pose sixteenthPosePostIntakeTwo = new Pose(126.25, 113, Math.toRadians(90));
+    private final Pose fifteenthPoseIntakeTwo = new Pose(137.75, 113, Math.toRadians(90));
+    private final Pose sixteenthPosePostIntakeTwo = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(115, 68, Math.toRadians(270));
-    private final Pose eighteenthPoseOuttakeThree = new Pose(108, 68, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(107.5, 68, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(118, 113, Math.toRadians(95));
-    private final Pose twentiethPoseIntakeThree = new Pose(137.25, 113, Math.toRadians(95));
+    private final Pose twentiethPoseIntakeThree = new Pose(135, 113, Math.toRadians(95));
     private final Pose twentyFirstPostPoseIntakeThree = new Pose(126.5, 113, Math.toRadians(95));
     private final Pose twentyFirstPostPoseIntakeThreeTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFourControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFour = new Pose(115, 70, Math.toRadians(270));
-    private final Pose twentyThirdPoseOuttakeFour = new Pose(108.25, 70, Math.toRadians(270));
+    private final Pose twentyThirdPoseOuttakeFour = new Pose(112.25, 70, Math.toRadians(270));
     private final Pose twentyFourthPoseParkControlOne = new Pose(130, 70, Math.toRadians(180));
     private final Pose twentyFourthPosePark = new Pose(130, 130, Math.toRadians(180));
+    private final Pose fifthPose = new Pose(125, 23, Math.toRadians(180));
+    private final Pose fifthPoseCONTROL = new Pose(120, 0, Math.toRadians(180));
 
-    private PathChain action6PushTwo, action24Park, action11turn, action9PreIntakeOne, action16Turn, action22PreOuttakeFourth, action23OuttakeFourth, action15IntakeTwo, action21turn, action21PostIntakeThree, action20IntakeThree, action19PreIntakeThree, action18OuttakeThree, action17PreOuttakeThree,action16PostIntakeTwo, action14PreIntakeTwo, action12PreOuttakeTwo, action10IntakeOne, action11PostIntakeOne, action8PushThree, action7CurvedForPushThree, action1PreOuttakeOne, action5CurvedForPushTwo, action2OuttakeOne, action13OuttakeTwo, action3DoubleCurvedPrePush, action4PushOne;
+    private PathChain action6PushTwo, actionHOLLUPSAMPLES, actionPARK, actionINTAKESKIP, action11turn, actionPREINTAKEone, action16Turn, action22PreOuttakeFourth, action23OuttakeFourth, action15IntakeTwo, action21turn, action21PostIntakeThree, action20IntakeThree, action19PreIntakeThree, action18OuttakeThree, action17PreOuttakeThree, action16PostIntakeTwo, action14PreIntakeTwo, action12PreOuttakeTwo, action10IntakeOne, action11PostIntakeOne, action8PushThree, action7CurvedForPushThree, action1PreOuttakeOne, action5CurvedForPushTwo, action2OuttakeOne, action13OuttakeTwo, action3DoubleCurvedPrePush, action4PushOne;
     private DcMotor skibidiSlider = null;
+    private DcMotor pidgeonMotor = null;
+    private DcMotor sliderMotor = null;
+    private Servo releaseServo = null;
+    private Servo pidgeonServo = null;
 
 
     public void buildPaths() {
@@ -106,9 +114,14 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
                 .setLinearHeadingInterpolation(fifthPosePrePushTwo.getHeading(), sixthPosePostPushTwo.getHeading())
                 .build();
 
-        action9PreIntakeOne = follower.pathBuilder()
-                .addPath(new BezierLine(new Point(sixthPosePostPushTwo), new Point(ninthPosePreIntakeOne)))
-                .setLinearHeadingInterpolation(sixthPosePostPushTwo.getHeading(), ninthPosePreIntakeOne.getHeading())
+        actionPREINTAKEone = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(fourthPosePostPushOne), new Point(ninthPosePreIntakeOne)))
+                .setLinearHeadingInterpolation(fourthPosePostPushOne.getHeading(), ninthPosePreIntakeOne.getHeading())
+                .build();
+
+        actionINTAKESKIP = follower.pathBuilder()
+                .addPath(new BezierLine(new Point(secondPoseOuttake), new Point(ninthPosePreIntakeOne)))
+                .setLinearHeadingInterpolation(secondPoseOuttake.getHeading(), ninthPosePreIntakeOne.getHeading())
                 .build();
 
         action10IntakeOne = follower.pathBuilder()
@@ -191,9 +204,14 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
                 .setLinearHeadingInterpolation(twentySecondPosePreOuttakeFour.getHeading(), twentyThirdPoseOuttakeFour.getHeading())
                 .build();
 
-        action24Park = follower.pathBuilder()
-                .addPath(new BezierCurve(new Point(twentyThirdPoseOuttakeFour), new Point(twentyFourthPoseParkControlOne), new Point(twentyFourthPosePark)))
-                .setLinearHeadingInterpolation(twentyThirdPoseOuttakeFour.getHeading(), twentyFourthPosePark.getHeading())
+        actionPARK = follower.pathBuilder()
+                .addPath(new BezierCurve(new Point(eighteenthPoseOuttakeThree), new Point(twentyFourthPoseParkControlOne), new Point(twentyFourthPosePark)))
+                .setLinearHeadingInterpolation(eighteenthPoseOuttakeThree.getHeading(), twentyFourthPosePark.getHeading())
+                .build();
+
+        actionHOLLUPSAMPLES = follower.pathBuilder()
+                .addPath(new BezierCurve(new Point(thirteenthPoseOuttakeTwo), new Point(fifthPoseCONTROL), new Point(fifthPose)))
+                .setLinearHeadingInterpolation(thirteenthPoseOuttakeTwo.getHeading(), fifthPose.getHeading())
                 .build();
 
     }
@@ -205,7 +223,7 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
                 break;
             case 1:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.9);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action1PreOuttakeOne, true);
                     skibidiSlider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     skibidiSlider.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -217,7 +235,7 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
                 break;
             case 2:
                 if (!follower.isBusy()) {
-                  follower.setMaxPower(0.8);
+                    follower.setMaxPower(0.65);
                     follower.followPath(action2OuttakeOne, true);
                     setPathState(3);
                 }
@@ -225,205 +243,88 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
             case 3:
                 if (!follower.isBusy()) {
                     follower.holdPoint(secondPoseOuttake);
-                    sleep(175);
+                    sleep(200);
                     skibidiSlider.setPower(0.8);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(500);
-                    follower.setMaxPower(0.8);
-                    follower.followPath(action3DoubleCurvedPrePush, true);
+                    sleep(650);
+                    skibidiSlider.setPower(0.8);
+                    skibidiSlider.setTargetPosition(0);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.65);
+                    follower.followPath(actionINTAKESKIP, true);
                     setPathState(4);
                 }
                 break;
             case 4:
                 if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(0);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.followPath(action4PushOne, true);
+                    follower.setMaxPower(0.65);
+                    follower.followPath(action10IntakeOne, true);
                     setPathState(5);
                 }
                 break;
             case 5:
                 if (!follower.isBusy()) {
-                    follower.followPath(action5CurvedForPushTwo, true);
+                    follower.holdPoint(tenthPoseIntakeOne);
+                    skibidiSlider.setPower(0.9);
+                    skibidiSlider.setTargetPosition(500);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    sleep(200);
+                    follower.setMaxPower(0.65);
+                    follower.followPath(action11PostIntakeOne, true);
                     setPathState(6);
                 }
                 break;
             case 6:
                 if (!follower.isBusy()) {
-                    follower.followPath(action6PushTwo, true);
+                    skibidiSlider.setPower(0.9);
+                    skibidiSlider.setTargetPosition(2050);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.65);
+                    follower.followPath(action12PreOuttakeTwo, true);
                     setPathState(7);
                 }
                 break;
             case 7:
                 if (!follower.isBusy()) {
-                    follower.followPath(action9PreIntakeOne, true);
+                    follower.setMaxPower(0.65);
+                    follower.followPath(action13OuttakeTwo, true);
                     setPathState(8);
                 }
                 break;
             case 8:
                 if (!follower.isBusy()) {
-                    follower.setMaxPower(0.6);
-
-                    follower.followPath(action10IntakeOne, true);
+                    follower.holdPoint(thirteenthPoseOuttakeTwo);
+                    sleep(200);
+                    skibidiSlider.setPower(0.8);
+                    skibidiSlider.setTargetPosition(500);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    sleep(650);
+                    skibidiSlider.setPower(0.8);
+                    skibidiSlider.setTargetPosition(0);
+                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.setMaxPower(0.65);
+                    follower.followPath(actionHOLLUPSAMPLES, true);
                     setPathState(9);
                 }
                 break;
             case 9:
                 if (!follower.isBusy()) {
-                    follower.holdPoint(tenthPoseIntakeOne);
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(500);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(175);
-                    follower.setMaxPower(0.8);
-                    follower.followPath(action11PostIntakeOne, true);
-                    setPathState(10);
-                }
-                break;
-            case 10:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action12PreOuttakeTwo, true);
-                    setPathState(11);
-                }
-                break;
-            case 11:
-                if (!follower.isBusy()) {
-                  follower.setMaxPower(0.8);
-                    follower.followPath(action13OuttakeTwo, true);
-                    setPathState(12);
-                }
-                break;
-            case 12:
-                if (!follower.isBusy()) {
-                    follower.holdPoint(thirteenthPoseOuttakeTwo);
-                    sleep(175);
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(500);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.holdPoint(fifthPose);
+                    pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    pidgeonMotor.setPower(1);
+                    pidgeonMotor.setTargetPosition(882);
+                    pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(500);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action14PreIntakeTwo, true);
-                    setPathState(13);
-                }
-                break;
-            case 13:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(0);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
-
-                    follower.followPath(action15IntakeTwo, true);
-                    setPathState(14);
-                }
-                break;
-            case 14:
-                if (!follower.isBusy()) {
-                    follower.holdPoint(fifteenthPoseIntakeTwo);
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(500);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(175);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action16PostIntakeTwo, true);
-                    setPathState(15);
-                }
-                break;
-            case 15:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action17PreOuttakeThree, true);
-                    setPathState(16);
-                }
-                break;
-            case 16:
-                if (!follower.isBusy()) {
-                  follower.setMaxPower(0.8);
-                    follower.followPath(action18OuttakeThree, true);
-                    setPathState(17);
-                }
-                break;
-            case 17:
-                if (!follower.isBusy()) {
-                    follower.holdPoint(eighteenthPoseOuttakeThree);
-                    sleep(175);
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(500);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(500);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action19PreIntakeThree, true);
-                    setPathState(18);
-                }
-                break;
-            case 18:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(0);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.6);
-
-                    follower.followPath(action20IntakeThree, true);
-                    setPathState(19);
-                }
-                break;
-            case 19:
-                if (!follower.isBusy()) {
-                    follower.holdPoint(twentiethPoseIntakeThree);
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(500);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(175);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action21PostIntakeThree, true);
-                    setPathState(20);
-                }
-                break;
-            case 20:
-                if (!follower.isBusy()) {
-                    skibidiSlider.setPower(0.9);
-                    skibidiSlider.setTargetPosition(2050);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    follower.setMaxPower(0.8);;
-                    follower.followPath(action22PreOuttakeFourth, true);
-                    setPathState(21);
-                }
-                break;
-            case 21:
-                if (!follower.isBusy()) {
-                  follower.setMaxPower(0.8);
-                    follower.followPath(action23OuttakeFourth, true);
-                    setPathState(22);
-                }
-                break;
-            case 22:
-                if (!follower.isBusy()) {
-                    follower.holdPoint(twentyThirdPoseOuttakeFour);
-                    sleep(175);
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(500);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(500);
-                    follower.setMaxPower(1);;
-                    follower.followPath(action24Park, true);
-                    skibidiSlider.setPower(0.8);
-                    skibidiSlider.setTargetPosition(0);
-                    skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    setPathState(23);
-                }
-            case 23:
-                if (!follower.isBusy()) {
+                    sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    sliderMotor.setPower(1);
+                    sliderMotor.setTargetPosition(1600);
+                    sleep(2000);
+                    releaseServo.setPosition(1);
+                    sleep(2000);
                     setPathState(-1);
                 }
+                break;
         }
     }
 
@@ -442,24 +343,28 @@ public class threeSpecANDPushSUPERdeluXe extends OpMode {
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
         telemetry.addData("heading", follower.getPose().getHeading());
+        Drawing.drawDebug(follower);
         telemetry.update();
 
         telemetryA = new MultipleTelemetry(this.telemetry, FtcDashboard.getInstance().getTelemetry());
         telemetryA.update();
     }
 
-
     @Override
     public void init() {
         pathTimer = new Timer();
         opmodeTimer = new Timer();
         sillyTimer = new Timer();
-        skibidiSlider = hardwareMap.get(DcMotor.class, "skibidiSlider");
         opmodeTimer.resetTimer();
 
         Constants.setConstants(FConstants.class, LConstants.class);
         follower = new Follower(hardwareMap);
         follower.setStartingPose(startPose);
+        skibidiSlider = hardwareMap.get(DcMotor.class, "skibidiSlider");
+        pidgeonMotor = hardwareMap.get(DcMotor.class, "pidgeonMotor");
+        sliderMotor = hardwareMap.get(DcMotor.class, "sliderMotor");
+        pidgeonServo = hardwareMap.get(Servo.class, "pidgeonServo");
+        releaseServo = hardwareMap.get(Servo.class, "releaseServo");
         buildPaths();
     }
 
