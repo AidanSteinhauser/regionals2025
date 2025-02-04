@@ -51,7 +51,7 @@ public class fourSpecimenDELUXE extends OpMode {
     private final Pose eleventhPosePostIntakeOneTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 72, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 72, Math.toRadians(270));
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(108.5, 72, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(110, 72, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose fourteenthPosePreIntakeTwo = new Pose(116, 113, Math.toRadians(90));
     private final Pose fifteenthPoseIntakeTwo = new Pose(136.75, 113, Math.toRadians(90));
@@ -59,7 +59,7 @@ public class fourSpecimenDELUXE extends OpMode {
     private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(115, 68, Math.toRadians(270));
-    private final Pose eighteenthPoseOuttakeThree = new Pose(108, 68, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(110, 68, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(118, 113, Math.toRadians(95));
     private final Pose twentiethPoseIntakeThree = new Pose(137.25, 113, Math.toRadians(95));
@@ -67,7 +67,7 @@ public class fourSpecimenDELUXE extends OpMode {
     private final Pose twentyFirstPostPoseIntakeThreeTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFourControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFour = new Pose(115, 70, Math.toRadians(270));
-    private final Pose twentyThirdPoseOuttakeFour = new Pose(108.25, 70, Math.toRadians(270));
+    private final Pose twentyThirdPoseOuttakeFour = new Pose(110, 70, Math.toRadians(270));
     private final Pose twentyFourthPoseParkControlOne = new Pose(130, 70, Math.toRadians(180));
     private final Pose twentyFourthPosePark = new Pose(130, 130, Math.toRadians(180));
 
