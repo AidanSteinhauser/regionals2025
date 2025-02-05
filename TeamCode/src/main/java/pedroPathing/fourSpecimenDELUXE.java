@@ -84,6 +84,7 @@ public class fourSpecimenDELUXE extends OpMode {
         action2OuttakeOne = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(firstPosePreOuttake), new Point(secondPoseOuttake)))
                 .setLinearHeadingInterpolation(firstPosePreOuttake.getHeading(), secondPoseOuttake.getHeading())
+                .setZeroPowerAccelerationMultiplier(2)
                 .build();
 
         action3DoubleCurvedPrePush = follower.pathBuilder()
@@ -136,6 +137,7 @@ public class fourSpecimenDELUXE extends OpMode {
         action13OuttakeTwo = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(twelfthPosePreOuttakeTwo), new Point(thirteenthPoseOuttakeTwo)))
                 .setLinearHeadingInterpolation(twelfthPosePreOuttakeTwo.getHeading(), thirteenthPoseOuttakeTwo.getHeading())
+                .setZeroPowerAccelerationMultiplier(2)
                 .build();
 
         action14PreIntakeTwo = follower.pathBuilder()
@@ -166,6 +168,7 @@ public class fourSpecimenDELUXE extends OpMode {
         action18OuttakeThree = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(seventeenthPosePreOuttakeThree), new Point(eighteenthPoseOuttakeThree)))
                 .setLinearHeadingInterpolation(seventeenthPosePreOuttakeThree.getHeading(), eighteenthPoseOuttakeThree.getHeading())
+                .setZeroPowerAccelerationMultiplier(2)
                 .build();
 
         action19PreIntakeThree = follower.pathBuilder()
@@ -191,11 +194,13 @@ public class fourSpecimenDELUXE extends OpMode {
         action23OuttakeFourth = follower.pathBuilder()
                 .addPath(new BezierLine(new Point(twentySecondPosePreOuttakeFour), new Point(twentyThirdPoseOuttakeFour)))
                 .setLinearHeadingInterpolation(twentySecondPosePreOuttakeFour.getHeading(), twentyThirdPoseOuttakeFour.getHeading())
+                .setZeroPowerAccelerationMultiplier(2)
                 .build();
 
         action24Park = follower.pathBuilder()
                 .addPath(new BezierCurve(new Point(twentyThirdPoseOuttakeFour), new Point(twentyFourthPoseParkControlOne), new Point(twentyFourthPosePark)))
                 .setLinearHeadingInterpolation(twentyThirdPoseOuttakeFour.getHeading(), twentyFourthPosePark.getHeading())
+                .setZeroPowerAccelerationMultiplier(7)
                 .build();
 
     }
@@ -227,7 +232,7 @@ public class fourSpecimenDELUXE extends OpMode {
             case 3:
                 if (!follower.isBusy()) {
                     follower.holdPoint(secondPoseOuttake);
-                    sleep(175);
+                    sleep(90);
                     skibidiSlider.setPower(0.85);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -302,7 +307,7 @@ public class fourSpecimenDELUXE extends OpMode {
             case 12:
                 if (!follower.isBusy()) {
                     follower.holdPoint(thirteenthPoseOuttakeTwo);
-                    sleep(175);
+                    sleep(90);
                     skibidiSlider.setPower(0.85);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -354,7 +359,7 @@ public class fourSpecimenDELUXE extends OpMode {
             case 17:
                 if (!follower.isBusy()) {
                     follower.holdPoint(eighteenthPoseOuttakeThree);
-                    sleep(175);
+                    sleep(90);
                     skibidiSlider.setPower(0.85);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -405,16 +410,16 @@ public class fourSpecimenDELUXE extends OpMode {
             case 22:
                 if (!follower.isBusy()) {
                     follower.holdPoint(twentyThirdPoseOuttakeFour);
-                    sleep(175);
+                    sleep(90);
                     skibidiSlider.setPower(0.85);
                     skibidiSlider.setTargetPosition(500);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    sleep(400);
-                    follower.setMaxPower(1);;
-                    follower.followPath(action24Park, true);
+                    sleep(350);
+                    follower.setMaxPower(1);
                     skibidiSlider.setPower(0.85);
                     skibidiSlider.setTargetPosition(0);
                     skibidiSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    follower.followPath(action24Park, true);
                     setPathState(23);
                 }
             case 23:
