@@ -23,7 +23,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@Autonomous(name = "fourSpecimenDELUXE", group = "Regionals")
+@Autonomous(name = "fourSpecimenDELUXEadjustable", group = "Regionals")
 public class fourSpecimenDELUXEadjustable extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
