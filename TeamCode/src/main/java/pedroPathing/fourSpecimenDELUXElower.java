@@ -23,8 +23,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@Autonomous(name = "fourSpecimenDELUXEadjustable", group = "Regionals")
-public class fourSpecimenDELUXEadjustable extends OpMode {
+@Autonomous(name = "fourSpecimenDELUXElower", group = "Regionals")
+public class fourSpecimenDELUXElower extends OpMode {
     private Follower follower;
     private Telemetry telemetryA;
     private Timer pathTimer;
@@ -33,50 +33,49 @@ public class fourSpecimenDELUXEadjustable extends OpMode {
     private Timer opmodeTimer;
     private int pathState;
     private final Pose startPose = new Pose(135.65, 80.35, Math.toRadians(270));
-    private final Pose firstPosePreOuttake = new Pose(110, 76, Math.toRadians(270));
+    private final Pose firstPosePreOuttake = new Pose(110, 78, Math.toRadians(270));
     //TODO OUTTAKE ONE
-    private final Pose secondPoseOuttake = new Pose(106.75, 76, Math.toRadians(270));
+    private final Pose secondPoseOuttake = new Pose(106.5, 78, Math.toRadians(270));
     private final Pose thirdPosePrePushControlOne = new Pose(131, 117.5, Math.toRadians(0));
     private final Pose thirdPosePrePushControlTwo = new Pose(79, 102.5, Math.toRadians(0));
     private final Pose thirdPosePrePushOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose fourthPosePostPushOne = new Pose(128, 120, Math.toRadians(0));
-    private final Pose fifthPosePrePushTwoControlOne = new Pose(80, 108, Math.toRadians(0));
-    private final Pose fifthPosePrePushTwo = new Pose(76, 130, Math.toRadians(0));
+    private final Pose fifthPosePrePushTwoControlOne = new Pose(81, 108, Math.toRadians(0));
+    private final Pose fifthPosePrePushTwo = new Pose(84, 130, Math.toRadians(0));
     private final Pose sixthPosePostPushTwo = new Pose(128, 130, Math.toRadians(0));
     private final Pose seventhPosePrePushThreeControlOne = new Pose(82, 120, Math.toRadians(0));
     private final Pose seventhPosePrePushThree = new Pose(82, 135.5, Math.toRadians(0));
     private final Pose eighthPosePostPushThree = new Pose(128, 135.5, Math.toRadians(0));
     private final Pose ninthPosePreIntakeOne = new Pose(127, 113, Math.toRadians(90));
     //TODO intake one
-    private final Pose tenthPoseIntakeOne = new Pose(137.5, 113, Math.toRadians(90));
+    private final Pose tenthPoseIntakeOne = new Pose(137, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOne = new Pose(126.5, 113, Math.toRadians(90));
     private final Pose eleventhPosePostIntakeOneTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twelfthPosePreOuttakeTwoControlOne = new Pose(135, 73, Math.toRadians(270));
-    private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 73, Math.toRadians(270));
+    private final Pose twelfthPosePreOuttakeTwo = new Pose(112, 75, Math.toRadians(270));
     //TODO OUTTAKE TWO
-    private final Pose thirteenthPoseOuttakeTwo = new Pose(109, 73, Math.toRadians(270));
+    private final Pose thirteenthPoseOuttakeTwo = new Pose(109.5, 75, Math.toRadians(270));
     private final Pose fourteenthPosePreIntakeTwoControlOne = new Pose(130, 74, Math.toRadians(90));
-    private final Pose fourteenthPosePreIntakeTwo = new Pose(125
-            , 113, Math.toRadians(90));
+    private final Pose fourteenthPosePreIntakeTwo = new Pose(125, 113, Math.toRadians(90));
     //TODO intake two
-    private final Pose fifteenthPoseIntakeTwo = new Pose(136, 113, Math.toRadians(90));
+    private final Pose fifteenthPoseIntakeTwo = new Pose(135.75, 113, Math.toRadians(90));
     private final Pose sixteenthPosePostIntakeTwo = new Pose(126, 113, Math.toRadians(90));
     private final Pose sixteenthPosePostIntakeTwoTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThreeControlOne = new Pose(135, 74, Math.toRadians(270));
     private final Pose seventeenthPosePreOuttakeThree = new Pose(115, 66, Math.toRadians(270));
     //TODO OUTTAKE THREE
-    private final Pose eighteenthPoseOuttakeThree = new Pose(109.5, 66, Math.toRadians(270));
+    private final Pose eighteenthPoseOuttakeThree = new Pose(110, 66, Math.toRadians(270));
     private final Pose nineteenthPosePreIntakeThreeControlOne = new Pose(130, 74, Math.toRadians(90));
     private final Pose nineteenthPosePreIntakeThree = new Pose(127, 113, Math.toRadians(95));
     //TODO intake three
-    private final Pose twentiethPoseIntakeThree = new Pose(136, 113, Math.toRadians(95));
+    private final Pose twentiethPoseIntakeThree = new Pose(135.75, 113, Math.toRadians(95));
     private final Pose twentyFirstPostPoseIntakeThree = new Pose(126.5, 113, Math.toRadians(95));
     private final Pose twentyFirstPostPoseIntakeThreeTurned = new Pose(126.5, 113, Math.toRadians(270));
     private final Pose twentySecondPosePreOuttakeFourControlOne = new Pose(135, 74, Math.toRadians(270));
-    private final Pose twentySecondPosePreOuttakeFour = new Pose(115, 70, Math.toRadians(270));
+    private final Pose twentySecondPosePreOuttakeFour = new Pose(115, 68, Math.toRadians(270));
     //TODO OUTTAKE FOUR
-    private final Pose twentyThirdPoseOuttakeFour = new Pose(109.5, 70, Math.toRadians(270));
-    private final Pose twentyFourthPoseParkControlOne = new Pose(130, 70, Math.toRadians(180));
+    private final Pose twentyThirdPoseOuttakeFour = new Pose(110.5, 68, Math.toRadians(270));
+    private final Pose twentyFourthPoseParkControlOne = new Pose(130, 68, Math.toRadians(180));
     private final Pose twentyFourthPosePark = new Pose(132, 130, Math.toRadians(180));
 
     private PathChain action6PushTwo, action24Park, action11turn, action9PreIntakeOne, action16Turn, action22PreOuttakeFourth, action23OuttakeFourth, action15IntakeTwo, action21turn, action21PostIntakeThree, action20IntakeThree, action19PreIntakeThree, action18OuttakeThree, action17PreOuttakeThree,action16PostIntakeTwo, action14PreIntakeTwo, action12PreOuttakeTwo, action10IntakeOne, action11PostIntakeOne, action8PushThree, action7CurvedForPushThree, action1PreOuttakeOne, action5CurvedForPushTwo, action2OuttakeOne, action13OuttakeTwo, action3DoubleCurvedPrePush, action4PushOne;

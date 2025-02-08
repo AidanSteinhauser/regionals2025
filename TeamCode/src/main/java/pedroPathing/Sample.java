@@ -35,8 +35,8 @@ public class Sample extends OpMode {
 
     private final Pose firstPose = new Pose(135.65, 39.65, Math.toRadians(270));
     private final Pose secondPose = new Pose(125, 39.65, Math.toRadians(270));
-    private final Pose prescorePose = new Pose(123, 21, Math.toRadians(135));
-    private final Pose scoringPose = new Pose(128, 16, Math.toRadians(135));
+    private final Pose prescorePose = new Pose(123, 25, Math.toRadians(135));
+    private final Pose scoringPose = new Pose(128, 14, Math.toRadians(135));
     private final Pose fifthPose = new Pose(125, 23, Math.toRadians(181));
     private final Pose sixthPose = new Pose(125, 12, Math.toRadians(180));
     private final Pose seventhPose = new Pose(100, 30, Math.toRadians(270));
@@ -186,7 +186,7 @@ public class Sample extends OpMode {
                     sleep(500);
                     sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     sliderMotor.setPower(1);
-                    sliderMotor.setTargetPosition(2190);
+                    sliderMotor.setTargetPosition(2250);
                     sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(2000);
                     follower.followPath(action6, true);
@@ -212,7 +212,7 @@ public class Sample extends OpMode {
                     sleep(300);
                     sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     sliderMotor.setPower(1);
-                    sliderMotor.setTargetPosition(1550);
+                    sliderMotor.setTargetPosition(1525);
                     sleep(500);
                     pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     pidgeonMotor.setPower(1);
@@ -245,7 +245,7 @@ public class Sample extends OpMode {
                     pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
                     sliderMotor.setPower(1);
-                    sliderMotor.setTargetPosition(2190);
+                    sliderMotor.setTargetPosition(2250);
                     sliderMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     sleep(4000);
                     follower.followPath(action9, true);
@@ -281,9 +281,12 @@ public class Sample extends OpMode {
                 if (!follower.isBusy()) {
                     follower.holdPoint(sixthPose);
                     pidgeonMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-                    pidgeonMotor.setPower(0.5);
-                    pidgeonMotor.setTargetPosition(200);
+                    pidgeonMotor.setPower(1);
+                    pidgeonMotor.setTargetPosition(0);
                     pidgeonMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    sliderMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+                    sliderMotor.setPower(1);
+                    sliderMotor.setTargetPosition(0);
                     sleep(2000);
                     setPathState(-1);
                 }
