@@ -14,6 +14,7 @@ import com.pedropathing.pathgen.Point;
 import com.pedropathing.util.Constants;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -22,7 +23,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
-
+@Disabled
 @Autonomous(name = "fourSpecimenDELUXE", group = "Regionals")
 public class fourSpecimenDELUXE extends OpMode {
     private Follower follower;
